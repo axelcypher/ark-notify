@@ -8,23 +8,24 @@ import (
 
 func GenerateEmbedFromEvent(ae *event.ArkEvent) (discordgo.MessageEmbed) {
 	embed := discordgo.MessageEmbed{}
-	embed.Title = ae.GetEventTitle()
+	//embed.Title = ae.GetEventTitle()
 	embed.Color = ae.GetColor()
 	//embed.Timestamp = ae.Timestamp.Format("2006-01-02T15:04:05-07:00")
 	var fields []*discordgo.MessageEmbedField
-	for v := range ae.Info {
+	for k, v := range ae.Info {
+		f.Title = ae.Info["Player"] + ae.GetEventTitle()
 		f := discordgo.MessageEmbedField{}
-		f.Name = v
+		f.Name = k
 		//f.Value = v
 		f.Inline = true
 		fields = append(fields, &f)
 	}
-	if len(fields) == 0 {
+	/*if len(fields) == 0 {
 		f := discordgo.MessageEmbedField{}
 		f.Name = "RawLog"
 		f.Value = fmt.Sprintf("```%s```", ae.RawLog)
 		fields = append(fields, &f)
-	}
+	}*/
 	embed.Fields = fields
 	return embed
 }

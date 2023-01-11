@@ -1,7 +1,7 @@
 package discord
 
 import (
-	"fmt"
+	//"fmt"
 	"github.com/bwmarrin/discordgo"
 	"ark-notify/event"
 )

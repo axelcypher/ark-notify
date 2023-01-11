@@ -9,13 +9,14 @@ import (
 func GenerateEmbedFromEvent(ae *event.ArkEvent) (discordgo.MessageEmbed) {
 	embed := discordgo.MessageEmbed{}
 	//embed.Title = ae.GetEventTitle()
+	
 	embed.Color = ae.GetColor()
 	//embed.Timestamp = ae.Timestamp.Format("2006-01-02T15:04:05-07:00")
 	var fields []*discordgo.MessageEmbedField
-	for k, v := range ae.Info {
+	for v := range ae.Info {
 		f := discordgo.MessageEmbedField{}
-		f.Title = v + ae.GetEventTitle()
-		f.Name = k
+		embed.Title = v + ae.GetEventTitle()
+		//f.Name = k
 		//f.Value = v
 		f.Inline = true
 		fields = append(fields, &f)

@@ -16,12 +16,12 @@ func (ae ArkEvent) GetColor() int {
 func (ae ArkEvent) GetEventTitle() string {
 	switch ae.Kind {
 	case JoinEvent:
-		return ae.Info["Player"] + "Joined"
+		return " hat diese ARK betreten."
 	case LeaveEvent:
-		return ae.Info["Player"] + "User Left"
+		return " hat diese ARK verlassen."
 	case DefaultEvent:
 		fallthrough
 	default:
-		return "New Event"
+		return " "
 	}
 }

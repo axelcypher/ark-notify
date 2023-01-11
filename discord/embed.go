@@ -12,7 +12,7 @@ func GenerateEmbedFromEvent(ae *event.ArkEvent) (discordgo.MessageEmbed) {
 	embed.Color = ae.GetColor()
 	//embed.Timestamp = ae.Timestamp.Format("2006-01-02T15:04:05-07:00")
 	var fields []*discordgo.MessageEmbedField
-	for k, v := range ae.Info {
+	for v := range ae.Info {
 		f := discordgo.MessageEmbedField{}
 		f.Name = v
 		//f.Value = v

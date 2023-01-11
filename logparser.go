@@ -71,14 +71,7 @@ func ParseEventFromLogLine(logLine string) (*event.ArkEvent, error) {
 	logBody := logLine[50:len(logLine)-1]
 	log.Print("logBody:", logBody)
 	// detect event kind
-	if (strings.Contains(logLine, " was killed")) {
-		ae.Kind = event.KillEvent
-		parseKillEvent(&ae, logBody)
-	} else if (strings.Contains(logLine, " Tamed a")) {
-		ae.Kind = event.TameEvent
-	} else if (strings.Contains(logLine, " AdminCmd: ")) {
-		ae.Kind = event.AdminCmdEvent
-	} else if (strings.Contains(logLine, " joined this ARK")) {
+	if (strings.Contains(logLine, " joined this ARK")) {
 		ae.Kind = event.JoinEvent
 		parseJoinEvent(&ae, logBody)
 	} else if (strings.Contains(logLine, " left this ARK")) {
